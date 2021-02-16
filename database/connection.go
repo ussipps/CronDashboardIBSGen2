@@ -22,6 +22,6 @@ func ConnectDB() *sql.DB {
 	}
 	db.SetMaxOpenConns(0)
 	db.SetMaxIdleConns(0)
-	db.SetConnMaxLifetime(time.Nanosecond)
+	db.SetConnMaxLifetime(time.Nanosecond * 1000)
 	return db
 }
