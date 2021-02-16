@@ -2,8 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="03e6992e-e582-49a7-85a0-5fc279e49b20" name="Default Changelist" comment="Added Source">
-      <change beforePath="$PROJECT_DIR$/database/connection.go" beforeDir="false" afterPath="$PROJECT_DIR$/database/connection.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/functions/utility.go" beforeDir="false" afterPath="$PROJECT_DIR$/functions/utility.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/scheduler/task.go" beforeDir="false" afterPath="$PROJECT_DIR$/scheduler/task.go" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -52,7 +51,7 @@
     <property name="go.gopath.indexing.explicitly.defined" value="true" />
     <property name="go.import.settings.migrated" value="true" />
     <property name="go.sdk.automatically.set" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../CronDashboardIBS" />
     <property name="node.js.detected.package.jscs" value="true" />
     <property name="node.js.path.for.package.jscs" value="project" />
     <property name="node.js.selected.package.jscs" value="" />

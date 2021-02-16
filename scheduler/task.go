@@ -1,15 +1,13 @@
 package scheduler
 
 import (
+	"CronDashboardIBSGen2/database"
 	"CronDashboardIBSGen2/functions"
 	"bytes"
-	"database/sql"
 	"fmt"
 	_ "github.com/go-sql-driver/mysql"
-	"github.com/joho/godotenv"
 	_ "github.com/shopspring/decimal"
 	"github.com/vjeantet/jodaTime"
-	"log"
 	_ "math/big"
 	"net/http"
 	"os"
@@ -100,22 +98,11 @@ type SelectDashboardReportTKS struct {
 	Tanggal   string  `json:"tanggal"`
 }
 
+var db = database.ConnectDB()
+
 func GetDataDashboardReal() {
 
 	functions.Logger().Info("Starting Scheduler Get Data Dashboard Real ")
-	//DBSys := os.Getenv("DB_DATABASE_SYS")
-	err := godotenv.Load()
-	if err != nil {
-		log.Fatal("Error loading .env file koneksi db")
-	}
-	db, err := sql.Open(os.Getenv("DB_CONNECTION"), ""+os.Getenv("DB_USERNAME")+":"+os.Getenv("DB_PASSWORD")+"@tcp("+os.Getenv("DB_HOST")+":"+os.Getenv("DB_PORT")+")/"+os.Getenv("DB_DATABASE")+"")
-	if err != nil {
-		panic(err)
-	}
-	db.SetMaxOpenConns(0)
-	db.SetMaxIdleConns(0)
-	db.SetConnMaxLifetime(time.Nanosecond * 1000)
-
 	cTgl := jodaTime.Format("YYYYMMdd", time.Now())
 	cMonth := jodaTime.Format("MM", time.Now())
 	cYear := jodaTime.Format("YYYY", time.Now())
@@ -937,19 +924,6 @@ func GetDataDashboardReal() {
 
 func GetDataDashboardChart() {
 	functions.Logger().Info("Starting Scheduler Get Data Dashboard Chart ")
-	//cTgl := jodaTime.Format("YYYYMMdd", time.Now())
-	//cMonth := jodaTime.Format("MM", time.Now())
-	err := godotenv.Load()
-	if err != nil {
-		log.Fatal("Error loading .env file koneksi db")
-	}
-	db, err := sql.Open(os.Getenv("DB_CONNECTION"), ""+os.Getenv("DB_USERNAME")+":"+os.Getenv("DB_PASSWORD")+"@tcp("+os.Getenv("DB_HOST")+":"+os.Getenv("DB_PORT")+")/"+os.Getenv("DB_DATABASE")+"")
-	if err != nil {
-		panic(err)
-	}
-	db.SetMaxOpenConns(0)
-	db.SetMaxIdleConns(0)
-	db.SetConnMaxLifetime(time.Nanosecond * 2000)
 
 	cYear := jodaTime.Format("YYYY", time.Now())
 	DBRe := os.Getenv("DB_DATABASE_RE")
@@ -2285,20 +2259,6 @@ func monthInterval(t time.Time) (firstDay, lastDay time.Time) {
 func GetDataDashboardReport() {
 	functions.Logger().Info("Starting Scheduler Get Data Dashboard Report ")
 
-	err := godotenv.Load()
-	if err != nil {
-		log.Fatal("Error loading .env file koneksi db")
-	}
-	db, err := sql.Open(os.Getenv("DB_CONNECTION"), ""+os.Getenv("DB_USERNAME")+":"+os.Getenv("DB_PASSWORD")+"@tcp("+os.Getenv("DB_HOST")+":"+os.Getenv("DB_PORT")+")/"+os.Getenv("DB_DATABASE")+"")
-	if err != nil {
-		panic(err)
-	}
-	db.SetMaxOpenConns(0)
-	db.SetMaxIdleConns(0)
-	db.SetConnMaxLifetime(time.Nanosecond)
-
-	//cTgl := jodaTime.Format("YYYYMMdd", time.Now())
-	//cMonth := jodaTime.Format("MM", time.Now())
 	cYear := jodaTime.Format("YYYY", time.Now())
 	DBRe := os.Getenv("DB_DATABASE_RE")
 	m, _ := strconv.Atoi(jodaTime.Format("MM", time.Now()))
