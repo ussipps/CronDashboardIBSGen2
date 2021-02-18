@@ -1,2 +1,2 @@
-# CronIbsforMbs
-CRON IBS for MBS
+# CronDashboardIBSGen2
+CRON Dashboard for IBS Generation 2
